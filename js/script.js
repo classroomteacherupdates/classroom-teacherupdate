@@ -15,13 +15,14 @@ function simulateLogin() {
       return;
     }
 
+    const formData = new FormData();
+    formData.append("code", code);
+    formData.append("feedback", feedback);
+
     fetch("https://script.google.com/macros/s/AKfycbwPX5xpGgf650HGywGgGNX_jQu8ldwftZuih7fuB7MZT9Y2wpI57_wAeo8iXSPGIobr/exec", {
       method: "POST",
       mode: "no-cors",
-      body: JSON.stringify({ code, feedback }),
-      headers: {
-        "Content-Type": "application/json"
-      }
+      body: formData
     });
 
     alert("Submission successful! Redirecting...");
